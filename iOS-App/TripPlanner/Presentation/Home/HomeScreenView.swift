@@ -11,15 +11,19 @@ struct HomeScreenView: View {
     
     @State var searchText: String = ""
     let trips = Trip.getTrips()
+    @State private var router = AppRouter()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.path) {
             
             ScrollView {
                 LazyVStack {
                     ForEach(trips){ trip in
                         TripCardView(trip: trip)
                             .padding(.vertical,5)
+                            .onTapGesture {
+                                router.navigate(to: .tripDetail(trip))
+                            }
                     }
                 }
                 .padding(.horizontal,16)
@@ -31,6 +35,15 @@ struct HomeScreenView: View {
                 placement: .navigationBarDrawer(displayMode: .always),
                 prompt: "Search destinations"
             )
+            .navigationDestination(for: Destination.self) { destination in
+                switch destination {
+                    
+                case .tripDetail(let trip):
+                    TripDetailView(
+                        viewModel: TripDetailViewModel(trip: trip)
+                    )
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

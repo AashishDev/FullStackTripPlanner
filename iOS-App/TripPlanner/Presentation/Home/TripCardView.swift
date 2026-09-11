@@ -14,7 +14,7 @@ struct TripCardView: View {
     var body: some View {
         
         VStack(alignment:.leading,spacing:0){
-            trip.image
+            Image(trip.image)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 190)

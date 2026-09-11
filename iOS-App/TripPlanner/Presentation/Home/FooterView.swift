@@ -11,7 +11,7 @@ struct FooterView: View {
     
     let rating:Int
     let distance:String
-    let price:Int
+    let price:String
     
     var body: some View {
         HStack {
@@ -38,7 +38,7 @@ struct FooterView: View {
             
             HStack(spacing: 4) {
                 Image(systemName: "indianrupeesign")
-                Text("\(price)")
+                Text(price)
             }
             .foregroundStyle(.green)
         }
@@ -67,7 +67,7 @@ struct FooterView: View {
     FooterView(
         rating: 4,
         distance: "1200 km",
-        price: 15990
+        price: "15990"
     ).fixedSize()
 }
 

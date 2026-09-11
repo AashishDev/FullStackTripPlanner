@@ -8,7 +8,7 @@
 import Observation
 
 @Observable
-class TripDetailScreenViewModel {
+class TripDetailViewModel {
     let trip: Trip
     
     init(trip: Trip) {
