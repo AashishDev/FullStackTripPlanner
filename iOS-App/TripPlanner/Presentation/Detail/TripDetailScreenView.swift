@@ -35,6 +35,5 @@ struct TripDetailView: View {
 //            )
 //            .background(.ultraThinMaterial)
 //        }
-        .navigationBarBackButtonHidden()
     }
 }
